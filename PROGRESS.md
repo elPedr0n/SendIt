@@ -10,16 +10,16 @@ Legenda: `[ ]` pendente · `[/]` em andamento · `[x]` concluído
 
 Objetivo: ter o ambiente de desenvolvimento funcional e a base do projeto estruturada.
 
-- [ ] Inicializar repositório com estrutura de pastas (`/backend`, `/mobile`, `/spec`, `/docs`)
-- [ ] Configurar `docker-compose.yml` com container PostgreSQL
-- [ ] Criar projeto Node.js + Express + TypeScript no `/backend`
-- [ ] Configurar Prisma ORM e conectar ao PostgreSQL
-- [ ] Definir o schema Prisma com as tabelas: `User`, `Workout_Session`, `Exercise_Dict`, `Workout_Set`, `User_Rankings`
-- [ ] Executar migrations iniciais e validar o banco
-- [ ] Criar projeto Expo (React Native + TypeScript) no `/mobile`
-- [ ] Configurar NativeWind (TailwindCSS) no projeto mobile
-- [ ] Configurar TanStack Query no projeto mobile
-- [ ] Documentar o processo de setup local no README
+- [x] Inicializar repositório com estrutura de pastas (`/backend`, `/mobile`, `/spec`, `/docs`)
+- [x] Configurar `docker-compose.yml` com container PostgreSQL (porta padrão 5432)
+- [x] Criar projeto Node.js + Express + TypeScript no `/backend`
+- [x] Configurar Prisma ORM e conectar ao PostgreSQL
+- [x] Definir o schema Prisma com as tabelas: `User`, `Workout_Session`, `Exercise_Dict`, `Workout_Set`, `User_Rankings`
+- [x] Executar migrations iniciais e validar o banco
+- [x] Criar projeto Expo (React Native + TypeScript) no `/mobile`
+- [x] Configurar NativeWind (TailwindCSS) no projeto mobile
+- [x] Configurar TanStack Query no projeto mobile
+- [x] Documentar o processo de setup local no README
 
 ---
 

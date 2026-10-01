@@ -1,0 +1,83 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String            @id @default(uuid())
+  name          String
+  bodyweightKg  Float?            @map("bodyweight_kg")
+  currentStreak Int               @default(0) @map("current_streak")
+  weeklyGoal    Int               @default(4) @map("weekly_goal")
+  createdAt     DateTime          @default(now()) @map("created_at")
+  updatedAt     DateTime          @updatedAt @map("updated_at")
+
+  workoutSessions WorkoutSession[]
+  userRankings    UserRanking[]
+
+  @@map("users")
+}
+
+model ExerciseDict {
+  id           String       @id @default(uuid())
+  name         String       @unique
+  category     String       // ex: Peito, Costas, Pernas, Escalada, Cardio
+  trackingType String       @default("reps_weight") @map("tracking_type") // reps_weight | time | distance
+  createdAt    DateTime     @default(now()) @map("created_at")
+
+  workoutSets  WorkoutSet[]
+  userRankings UserRanking[]
+
+  @@map("exercise_dict")
+}
+
+model WorkoutSession {
+  id           String       @id @default(uuid())
+  userId       String       @map("user_id")
+  date         DateTime     @default(now())
+  activityType String       @map("activity_type") // Musculacao, Escalada, Natacao, Corrida, etc.
+  durationMin  Int?         @map("duration_min")
+  rpe          Int?         // Perceived exertion 1-10
+  notes        String?
+  createdAt    DateTime     @default(now()) @map("created_at")
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sets         WorkoutSet[]
+
+  @@map("workout_sessions")
+}
+
+model WorkoutSet {
+  id         String         @id @default(uuid())
+  sessionId  String         @map("session_id")
+  exerciseId String         @map("exercise_id")
+  reps       Int?
+  weightKg   Float?         @map("weight_kg")
+  isPr       Boolean        @default(false) @map("is_pr")
+  createdAt  DateTime       @default(now()) @map("created_at")
+
+  session    WorkoutSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  exercise   ExerciseDict   @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
+
+  @@map("workout_sets")
+}
+
+model UserRanking {
+  id           String       @id @default(uuid())
+  userId       String       @map("user_id")
+  exerciseId   String       @map("exercise_id")
+  current1rm   Float        @map("current_1rm")
+  currentTier  String       @map("current_tier") // Cobre, Bronze, Prata, Ouro, Platina, Diamante, Esmeralda, Mestre
+  dateAchieved DateTime     @default(now()) @map("date_achieved")
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exercise     ExerciseDict @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
+
+  @@unique([userId, exerciseId])
+  @@map("user_rankings")
+}
+

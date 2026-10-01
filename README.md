@@ -120,20 +120,68 @@ User_Rankings
 git clone https://github.com/elPedr0n/SendIt.git
 cd SendIt
 
-# Subir o banco de dados e backend
+# Subir o banco de dados PostgreSQL via Docker
 docker-compose up -d
 
-# Instalar dependências do backend
-cd backend && npm install
+# Configurar e rodar o backend
+cd backend
+npm install
+npx prisma migrate dev
+npm run dev
 
-# Instalar dependências do frontend
-cd ../mobile && npm install
-
-# Iniciar o app mobile
+# Em outro terminal, rodar o app mobile
+cd mobile
+npm install
 npx expo start
 ```
 
-> Os comandos acima assumem a estrutura de diretórios que será criada durante a implementação. Consulte a documentação de cada módulo conforme o projeto avança.
+> Nota: O PostgreSQL roda na porta padrão `5432` via Docker e o backend escuta em `http://localhost:3001`.
+
+## Retomar o Desenvolvimento
+
+Com o setup inicial concluído, abra o Docker Desktop e use os comandos abaixo. Comece cada terminal na raiz do projeto (`SendIt`).
+
+### 1. Subir o banco de dados
+
+```powershell
+docker compose up -d
+```
+
+Esse comando inicia o PostgreSQL em segundo plano, usando os dados já salvos no volume local.
+
+### 2. Iniciar a API
+
+No mesmo terminal, após iniciar o banco:
+
+```powershell
+cd backend
+npm run dev
+```
+
+Mantenha esse terminal aberto. A API acompanha as alterações no código automaticamente. Para conferir a conexão com o banco, abra [http://localhost:3001/health](http://localhost:3001/health); a resposta deve indicar `status: "ok"` e `database: "connected"`.
+
+O backend precisa do arquivo `backend/.env`. Caso ele ainda não exista, copie `.env.example` para `.env` dentro da pasta `backend` e ajuste as variáveis para o seu ambiente.
+
+### 3. Iniciar o app mobile
+
+Abra outro terminal na raiz do projeto:
+
+```powershell
+cd mobile
+npm start
+```
+
+Mantenha esse terminal aberto e escaneie o QR Code com o Expo Go. Para conexão local, o computador e o celular devem estar na mesma rede Wi-Fi. As alterações no app aparecem com o Fast Refresh.
+
+### Quando dependências ou o banco mudarem
+
+- Se as dependências de uma das pastas mudarem, execute `npm install` nessa pasta antes de iniciar o serviço.
+- Se houver alterações no schema ou novas migrations, execute `npm run prisma:migrate` na pasta `backend`, com o banco ligado.
+- Se precisar regenerar o client do Prisma, execute `npm run prisma:generate` na pasta `backend`.
+
+### Encerrar a sessão
+
+Use `Ctrl+C` nos terminais da API e do Expo. Para parar o banco, execute `docker compose stop` em um terminal na raiz do projeto; os dados permanecem no volume.
 
 ---
 

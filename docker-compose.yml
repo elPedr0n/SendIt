@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sendit_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: sendit_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - sendit_pgdata:/var/lib/postgresql/data
+
+volumes:
+  sendit_pgdata:
+
