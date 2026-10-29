@@ -1,0 +1,107 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-29T12:00:00Z"
+  },
+  "title": "SendIt — Telas",
+  "launch": {
+    "view": "canvas"
+  },
+  "pages": [],
+  "boards": {
+    "Onboarding.dc.html": {
+      "x": 0,
+      "y": 1380,
+      "w": 390,
+      "h": 844,
+      "title": "Onboarding",
+      "is_interactive": true,
+      "radius": 40
+    },
+    "NovaSessao.dc.html": {
+      "x": 470,
+      "y": 1380,
+      "w": 390,
+      "h": 844,
+      "title": "Nova sessão",
+      "radius": 40
+    },
+    "QuickLog.dc.html": {
+      "x": 940,
+      "y": 1380,
+      "w": 390,
+      "h": 844,
+      "title": "Quick Log",
+      "is_interactive": true,
+      "radius": 40
+    },
+    "LevelUp.dc.html": {
+      "x": 1410,
+      "y": 1380,
+      "w": 390,
+      "h": 844,
+      "title": "Level Up",
+      "radius": 40
+    },
+    "Exercicios.dc.html": {
+      "x": 0,
+      "y": 2604,
+      "w": 390,
+      "h": 844,
+      "title": "Exercícios",
+      "radius": 40
+    },
+    "NovoExercicio.dc.html": {
+      "x": 470,
+      "y": 2604,
+      "w": 390,
+      "h": 844,
+      "title": "Novo exercício",
+      "is_interactive": true,
+      "radius": 40
+    },
+    "Perfil.dc.html": {
+      "x": 940,
+      "y": 2604,
+      "w": 390,
+      "h": 844,
+      "title": "Perfil",
+      "radius": 40
+    },
+    "Sistema.dc.html": {
+      "x": 1410,
+      "y": 2604,
+      "w": 760,
+      "h": 844,
+      "title": "Sistema: tiers & tab bar"
+    }
+  },
+  "order": [
+    "Onboarding.dc.html",
+    "NovaSessao.dc.html",
+    "QuickLog.dc.html",
+    "LevelUp.dc.html",
+    "Exercicios.dc.html",
+    "NovoExercicio.dc.html",
+    "Perfil.dc.html",
+    "Sistema.dc.html"
+  ],
+  "notes": {
+    "rowFluxo": {
+      "x": 0,
+      "y": 1080,
+      "text": "Fluxo de treino & gamificação",
+      "kind": "title1",
+      "maxW": 1800
+    },
+    "rowConta": {
+      "x": 0,
+      "y": 2304,
+      "text": "Catálogo, perfil & sistema",
+      "kind": "title1",
+      "maxW": 2170
+    }
+  },
+  "designSystems": []
+}

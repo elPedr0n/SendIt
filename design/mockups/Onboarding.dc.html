@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Onboarding</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#22D37A}a:hover{color:#4ADE95}
+input::placeholder{color:#6B7586}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0A0D12; color: #F1F5F9; font-family: Outfit, system-ui, sans-serif; padding: 60px 20px 28px; display: flex; flex-direction: column; gap: 20px">
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 4px; color: #22D37A">SENDIT</div>
+    <h1 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 44px; line-height: 1; letter-spacing: 0.2px">Bora começar.</h1>
+    <p style="margin: 0; font-size: 15px; line-height: 1.45; color: #9AA4B2">Três dados e você já registra o primeiro treino.</p>
+  </div>
+
+  <div style="background: #151B23; border-radius: 20px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px">
+    <label for="nome" style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">COMO QUER SER CHAMADO?</label>
+    <input id="nome" type="text" placeholder="Seu nome" value="Lucas" style="background: #1E2530; border: none; border-radius: 14px; height: 52px; padding: 0 16px; color: #F1F5F9; font-family: Outfit, sans-serif; font-size: 18px; font-weight: 600; outline: none">
+  </div>
+
+  <div style="background: #151B23; border-radius: 20px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">PESO CORPORAL</span>
+      <span style="font-size: 12px; color: #9AA4B2">usado nas patentes</span>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+      <button type="button" aria-label="Diminuir peso" onClick="{{ minus }}" style="width: 64px; height: 64px; border: none; border-radius: 18px; background: #1E2530; color: #F1F5F9; display: flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+      </button>
+      <div style="display: flex; align-items: baseline; gap: 6px">
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 56px; line-height: 1">{{ weightLabel }}</span>
+        <span style="font-size: 16px; color: #9AA4B2">kg</span>
+      </div>
+      <button type="button" aria-label="Aumentar peso" onClick="{{ plus }}" style="width: 64px; height: 64px; border: none; border-radius: 18px; background: #22D37A; color: #062814; display: flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="background: #151B23; border-radius: 20px; padding: 16px 18px; display: flex; flex-direction: column; gap: 12px">
+    <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">META SEMANAL</span>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px">
+      <sc-for list="{{ goals }}" as="g" hint-placeholder-count="7">
+        <sc-if value="{{ g.selected }}" hint-placeholder-val="{{ false }}">
+          <button type="button" aria-pressed="true" onClick="{{ g.pick }}" style="height: 52px; border: none; border-radius: 14px; background: #22D37A; color: #062814; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 24px; cursor: pointer">{{ g.n }}</button>
+        </sc-if>
+        <sc-if value="{{ g.unselected }}" hint-placeholder-val="{{ true }}">
+          <button type="button" aria-pressed="false" onClick="{{ g.pick }}" style="height: 52px; border: none; border-radius: 14px; background: #1E2530; color: #C9D1DC; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 24px; cursor: pointer">{{ g.n }}</button>
+        </sc-if>
+      </sc-for>
+    </div>
+    <p style="margin: 0; font-size: 13px; line-height: 1.45; color: #9AA4B2"><span style="color: #F1F5F9; font-weight: 600">{{ goalLabel }}</span> — bateu a meta, o streak não quebra. Dias de descanso também protegem a sequência.</p>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+
+  <button type="button" style="height: 60px; border: none; border-radius: 18px; background: #22D37A; color: #062814; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 1.5px; cursor: pointer">COMEÇAR</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { weight: 78, goal: 4 };
+  }
+  renderVals() {
+    const w = this.state.weight;
+    const goal = this.state.goal;
+    const goals = [1, 2, 3, 4, 5, 6, 7].map((n) => ({
+      n: n,
+      selected: n === goal,
+      unselected: n !== goal,
+      pick: () => this.setState({ goal: n })
+    }));
+    return {
+      weightLabel: w.toFixed(1).replace('.', ','),
+      minus: () => this.setState({ weight: Math.max(30, w - 0.5) }),
+      plus: () => this.setState({ weight: Math.min(250, w + 0.5) }),
+      goals: goals,
+      goalLabel: goal + (goal === 1 ? ' treino por semana' : ' treinos por semana')
+    };
+  }
+}
+</script>
+</body>
+</html>

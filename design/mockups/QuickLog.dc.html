@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Quick Log</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#22D37A}a:hover{color:#4ADE95}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0A0D12; color: #F1F5F9; font-family: Outfit, system-ui, sans-serif; position: relative; overflow: hidden">
+  <div aria-hidden="true" style="padding: 60px 20px 0; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <span style="font-size: 12px; letter-spacing: 2.4px; color: #9AA4B2">TERÇA-FEIRA, 14</span>
+      <span style="font-size: 22px; font-weight: 600">Bora treinar, Lucas</span>
+    </div>
+    <div style="height: 170px; border-radius: 24px; background: #151B23; display: flex; align-items: center; justify-content: center; gap: 12px">
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 80px">12</span>
+    </div>
+  </div>
+  <div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(3, 5, 8, 0.72)"></div>
+
+  <div role="dialog" aria-label="Quick Log" style="position: absolute; left: 0; right: 0; bottom: 0; background: #151B23; border-radius: 28px 28px 0 0; padding: 10px 20px 28px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; justify-content: center"><div style="width: 40px; height: 5px; border-radius: 3px; background: #2E3744"></div></div>
+    <div style="display: flex; align-items: center; justify-content: space-between">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22D37A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"></path></svg>
+        <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 32px; line-height: 1">Quick Log</h2>
+      </div>
+      <button type="button" aria-label="Fechar" style="width: 40px; height: 40px; border: none; border-radius: 20px; background: #1E2530; color: #C9D1DC; display: flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">ATIVIDADE</span>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <sc-for list="{{ activities }}" as="a" hint-placeholder-count="4">
+          <button type="button" aria-pressed="{{ a.pressed }}" onClick="{{ a.pick }}" style="{{ a.style }}">{{ a.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">DURAÇÃO</span>
+      <div style="display: flex; align-items: center; justify-content: space-between; background: #0F141B; border-radius: 18px; padding: 8px">
+        <button type="button" aria-label="Menos 5 minutos" onClick="{{ minus }}" style="width: 56px; height: 56px; border: none; border-radius: 14px; background: #1E2530; color: #F1F5F9; display: flex; align-items: center; justify-content: center; cursor: pointer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+        </button>
+        <div style="display: flex; align-items: baseline; gap: 6px">
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 48px; line-height: 1">{{ duration }}</span>
+          <span style="font-size: 15px; color: #9AA4B2">min</span>
+        </div>
+        <button type="button" aria-label="Mais 5 minutos" onClick="{{ plus }}" style="width: 56px; height: 56px; border: none; border-radius: 14px; background: #22D37A; color: #062814; display: flex; align-items: center; justify-content: center; cursor: pointer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        </button>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{ presets }}" as="p" hint-placeholder-count="4">
+          <button type="button" aria-pressed="{{ p.pressed }}" onClick="{{ p.pick }}" style="{{ p.style }}">{{ p.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">INTENSIDADE (RPE)</span>
+        <span style="font-size: 13px; color: #F1F5F9; font-weight: 600">{{ rpeLabel }}</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 4px">
+        <sc-for list="{{ rpes }}" as="r" hint-placeholder-count="10">
+          <button type="button" aria-label="RPE {{ r.n }}" aria-pressed="{{ r.pressed }}" onClick="{{ r.pick }}" style="{{ r.style }}">{{ r.n }}</button>
+        </sc-for>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 12px; color: #9AA4B2"><span>leve</span><span>no limite</span></div>
+    </div>
+
+    <button type="button" style="height: 60px; border: none; border-radius: 18px; background: #22D37A; color: #062814; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 1.5px; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+      SALVAR TREINO
+    </button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { activity: 'Musculação', duration: 45, rpe: 7 };
+  }
+  renderVals() {
+    const s = this.state;
+    const chip = (on) => 'height: 44px; padding: 0 16px; border-radius: 22px; cursor: pointer; font-size: 15px; font-weight: 600; ' +
+      (on ? 'border: none; background: #22D37A; color: #062814;' : 'border: 1px solid #2E3744; background: transparent; color: #C9D1DC;');
+    const activities = ['Musculação', 'Escalada', 'Natação', 'Corrida', 'Outro'].map((label) => ({
+      label: label,
+      pressed: label === s.activity ? 'true' : 'false',
+      style: chip(label === s.activity),
+      pick: () => this.setState({ activity: label })
+    }));
+    const presets = [30, 45, 60, 90].map((m) => ({
+      label: m + ' min',
+      pressed: m === s.duration ? 'true' : 'false',
+      style: 'height: 44px; border-radius: 14px; cursor: pointer; font-size: 15px; font-weight: 600; ' +
+        (m === s.duration ? 'border: 1.5px solid #22D37A; background: #10301F; color: #4ADE95;' : 'border: none; background: #1E2530; color: #C9D1DC;'),
+      pick: () => this.setState({ duration: m })
+    }));
+    const tone = (n) => (n <= 4 ? '#22D37A' : n <= 7 ? '#F5B53D' : '#FF7A45');
+    const rpes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => {
+      const filled = n <= s.rpe;
+      const current = n === s.rpe;
+      return {
+        n: n,
+        pressed: current ? 'true' : 'false',
+        style: 'height: ' + (current ? 56 : 48) + 'px; align-self: end; border: none; border-radius: 10px; cursor: pointer; ' +
+          "font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: " + (current ? 22 : 17) + 'px; ' +
+          (filled ? 'background: ' + tone(n) + '; color: #0A0D12;' : 'background: #1E2530; color: #8B95A5;'),
+        pick: () => this.setState({ rpe: n })
+      };
+    });
+    const words = { 1: 'Muito leve', 2: 'Leve', 3: 'Leve', 4: 'Moderado', 5: 'Moderado', 6: 'Puxado', 7: 'Pesado', 8: 'Muito pesado', 9: 'Quase no limite', 10: 'No limite' };
+    return {
+      activities: activities,
+      presets: presets,
+      rpes: rpes,
+      duration: s.duration,
+      rpeLabel: s.rpe + ' · ' + words[s.rpe],
+      minus: () => this.setState({ duration: Math.max(5, s.duration - 5) }),
+      plus: () => this.setState({ duration: Math.min(300, s.duration + 5) })
+    };
+  }
+}
+</script>
+</body>
+</html>

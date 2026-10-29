@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Sistema visual</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#22D37A}a:hover{color:#4ADE95}
+</style>
+</helmet>
+<div style="width: 760px; height: 844px; box-sizing: border-box; background: #0A0D12; color: #F1F5F9; font-family: Outfit, system-ui, sans-serif; padding: 40px; display: flex; flex-direction: column; gap: 28px">
+  <div style="display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 32px; line-height: 1">Patentes</h2>
+      <span style="font-size: 13px; color: #9AA4B2">cada tier difere em matiz e em luminosidade</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+      <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="8">
+        <div style="background: #151B23; border-radius: 18px; padding: 14px; display: flex; align-items: center; gap: 12px">
+          <div style="{{ t.badge }}">{{ t.n }}</div>
+          <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+            <span style="{{ t.nameStyle }}">{{ t.name }}</span>
+            <span style="font-size: 12px; color: #9AA4B2; font-family: ui-monospace, monospace">{{ t.hex }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 28px">
+    <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 32px; line-height: 1">Cores base</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+        <sc-for list="{{ swatches }}" as="s" hint-placeholder-count="6">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <div style="{{ s.chip }}"></div>
+            <span style="font-size: 13px; font-weight: 600">{{ s.name }}</span>
+            <span style="font-size: 12px; color: #9AA4B2; font-family: ui-monospace, monospace">{{ s.hex }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="flex: 1 1 0; display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 32px; line-height: 1">Tipografia</h2>
+      <div style="background: #151B23; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 56px; line-height: 1">62,5 kg</span>
+        <span style="font-size: 13px; color: #9AA4B2">Barlow Condensed 700 · números, títulos, CTAs</span>
+      </div>
+      <div style="background: #151B23; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 18px; font-weight: 600">Última vez: 3×10 · 60 kg</span>
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">RÓTULO EM CAIXA ALTA</span>
+        <span style="font-size: 13px; color: #9AA4B2">Outfit 400–700 · texto e rótulos</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 32px; line-height: 1">Tab bar</h2>
+      <span style="font-size: 13px; color: #9AA4B2">fixa nas 4 telas raiz · ativo em verde</span>
+    </div>
+    <nav aria-label="Exemplo de tab bar" style="width: 390px; height: 84px; box-sizing: border-box; padding: 8px 12px 22px; background: #0F141B; border: 1px solid #1E2530; border-radius: 20px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr))">
+      <span style="color: #22D37A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 700">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4 0 7-3 7-7 0-4-3-6-4-10-2 2-3 4-3 6-1-1-2-2-2-4-2 2-5 5-5 8 0 4 3 7 7 7z"></path></svg>
+        Hoje
+      </span>
+      <span style="color: #8B95A5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 600">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        Histórico
+      </span>
+      <span style="color: #8B95A5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 600">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 13.8L7 22l5-3 5 3-1.5-8.2"></path></svg>
+        Patentes
+      </span>
+      <span style="color: #8B95A5; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; font-size: 11px; font-weight: 600">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg>
+        Perfil
+      </span>
+    </nav>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":760,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const tiers = [
+      { name: 'Cobre', hex: '#B5562E', text: '#D2734A', g: ['#E08A5C', '#B5562E', '#7A3417'], ink: '#2A1006' },
+      { name: 'Bronze', hex: '#C9924A', text: '#D9A962', g: ['#F0CB8E', '#C9924A', '#8A5E25'], ink: '#2E1D06' },
+      { name: 'Prata', hex: '#C7CED8', text: '#C7CED8', g: ['#F4F6F9', '#C7CED8', '#8C96A3'], ink: '#1F2630' },
+      { name: 'Ouro', hex: '#F2C230', text: '#F2C230', g: ['#FFF0B3', '#F2C230', '#B8860B'], ink: '#3A2A00' },
+      { name: 'Platina', hex: '#7FD6CF', text: '#7FD6CF', g: ['#E3FBF8', '#7FD6CF', '#3E9A93'], ink: '#0B2E2B' },
+      { name: 'Diamante', hex: '#7CB8FF', text: '#7CB8FF', g: ['#E0F0FF', '#7CB8FF', '#3B74C9'], ink: '#0B2147' },
+      { name: 'Esmeralda', hex: '#12B886', text: '#34D399', g: ['#A7F3D0', '#12B886', '#06664A'], ink: '#03291D' },
+      { name: 'Mestre', hex: '#B794F6', text: '#B794F6', g: ['#E9DDFF', '#B794F6', '#6B46C1'], ink: '#24104F' }
+    ].map((t, i) => ({
+      name: t.name,
+      hex: t.hex,
+      n: i + 1,
+      nameStyle: 'font-size: 16px; font-weight: 700; color: ' + t.text,
+      badge: 'width: 48px; height: 48px; flex-shrink: 0; border-radius: 14px; display: flex; align-items: center; justify-content: center; ' +
+        "font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 24px; color: " + t.ink + '; ' +
+        'background: linear-gradient(135deg, ' + t.g[0] + ' 0%, ' + t.g[1] + ' 45%, ' + t.g[2] + ' 80%, ' + t.g[0] + ' 100%)'
+    }));
+    const swatches = [
+      { name: 'Fundo', hex: '#0A0D12' },
+      { name: 'Superfície', hex: '#151B23' },
+      { name: 'Superfície 2', hex: '#1E2530' },
+      { name: 'Texto', hex: '#F1F5F9' },
+      { name: 'Secundário', hex: '#9AA4B2' },
+      { name: 'Acento', hex: '#22D37A' }
+    ].map((s) => ({
+      name: s.name,
+      hex: s.hex,
+      chip: 'height: 52px; border-radius: 14px; border: 1px solid #2E3744; background: ' + s.hex
+    }));
+    return { tiers: tiers, swatches: swatches };
+  }
+}
+</script>
+</body>
+</html>

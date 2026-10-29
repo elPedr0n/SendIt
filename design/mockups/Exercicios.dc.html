@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Exercícios</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#22D37A}a:hover{color:#4ADE95}
+button{font-family:inherit}
+input::placeholder{color:#8B95A5}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #0A0D12; color: #F1F5F9; font-family: Outfit, system-ui, sans-serif; padding: 56px 20px 0; display: flex; flex-direction: column; gap: 16px; overflow: hidden">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <button type="button" aria-label="Voltar" style="width: 44px; height: 44px; border: none; border-radius: 22px; background: #151B23; color: #F1F5F9; display: flex; align-items: center; justify-content: center; cursor: pointer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+    </button>
+    <button type="button" style="height: 44px; padding: 0 16px 0 12px; border: none; border-radius: 22px; background: #22D37A; color: #062814; font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 6px; cursor: pointer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+      Novo
+    </button>
+  </div>
+
+  <h1 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 44px; line-height: 1">Exercícios</h1>
+
+  <div style="display: flex; align-items: center; gap: 10px; height: 50px; padding: 0 14px; border-radius: 16px; background: #151B23">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B95A5" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+    <label for="busca" style="position: absolute; left: -9999px">Buscar exercício</label>
+    <input id="busca" type="search" placeholder="Buscar exercício" style="flex-grow: 1; min-width: 0; background: transparent; border: none; outline: none; color: #F1F5F9; font-family: Outfit, sans-serif; font-size: 16px">
+  </div>
+
+  <div style="display: flex; gap: 8px; overflow: hidden; margin-right: -20px">
+    <button type="button" aria-pressed="true" style="flex-shrink: 0; height: 38px; padding: 0 14px; border: none; border-radius: 19px; background: #22D37A; color: #062814; font-size: 14px; font-weight: 600">Todos</button>
+    <button type="button" aria-pressed="false" style="flex-shrink: 0; height: 38px; padding: 0 14px; border: 1px solid #2E3744; border-radius: 19px; background: transparent; color: #C9D1DC; font-size: 14px; font-weight: 600">Peito</button>
+    <button type="button" aria-pressed="false" style="flex-shrink: 0; height: 38px; padding: 0 14px; border: 1px solid #2E3744; border-radius: 19px; background: transparent; color: #C9D1DC; font-size: 14px; font-weight: 600">Costas</button>
+    <button type="button" aria-pressed="false" style="flex-shrink: 0; height: 38px; padding: 0 14px; border: 1px solid #2E3744; border-radius: 19px; background: transparent; color: #C9D1DC; font-size: 14px; font-weight: 600">Pernas</button>
+    <button type="button" aria-pressed="false" style="flex-shrink: 0; height: 38px; padding: 0 14px; border: 1px solid #2E3744; border-radius: 19px; background: transparent; color: #C9D1DC; font-size: 14px; font-weight: 600">Ombros</button>
+    <button type="button" aria-pressed="false" style="flex-shrink: 0; height: 38px; padding: 0 14px; border: 1px solid #2E3744; border-radius: 19px; background: transparent; color: #C9D1DC; font-size: 14px; font-weight: 600">Escalada</button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">PEITO</span>
+    <div style="background: #151B23; border-radius: 20px; display: flex; flex-direction: column">
+      <button type="button" style="border: none; background: transparent; color: #F1F5F9; text-align: left; min-height: 64px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 16px; font-weight: 600">Supino reto</span>
+          <span style="font-size: 13px; color: #9AA4B2">1RM 84,5 kg · última 3×10 · 60 kg</span>
+        </div>
+        <span style="padding: 4px 10px; border-radius: 999px; background: #262C35; color: #C7CED8; font-size: 12px; font-weight: 700; letter-spacing: 0.6px">PRATA</span>
+      </button>
+      <div style="height: 1px; margin-left: 16px; background: #1E2530"></div>
+      <button type="button" style="border: none; background: transparent; color: #F1F5F9; text-align: left; min-height: 64px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 16px; font-weight: 600">Supino inclinado c/ halteres</span>
+          <span style="font-size: 13px; color: #9AA4B2">última 3×10 · 24 kg</span>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7586" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+      </button>
+      <div style="height: 1px; margin-left: 16px; background: #1E2530"></div>
+      <button type="button" style="border: none; background: transparent; color: #F1F5F9; text-align: left; min-height: 64px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 16px; font-weight: 600">Crucifixo no cabo</span>
+          <span style="font-size: 13px; color: #9AA4B2"><span style="color: #4ADE95">Personalizado</span> · última 3×12 · 15 kg</span>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7586" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">COSTAS</span>
+    <div style="background: #151B23; border-radius: 20px; display: flex; flex-direction: column">
+      <button type="button" style="border: none; background: transparent; color: #F1F5F9; text-align: left; min-height: 64px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 16px; font-weight: 600">Barra fixa</span>
+          <span style="font-size: 13px; color: #9AA4B2">1RM +12 kg · última 4×6 · peso corporal</span>
+        </div>
+        <span style="padding: 4px 10px; border-radius: 999px; background: #33281A; color: #D9A962; font-size: 12px; font-weight: 700; letter-spacing: 0.6px">BRONZE</span>
+      </button>
+      <div style="height: 1px; margin-left: 16px; background: #1E2530"></div>
+      <button type="button" style="border: none; background: transparent; color: #F1F5F9; text-align: left; min-height: 64px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 16px; font-weight: 600">Remada curvada</span>
+          <span style="font-size: 13px; color: #9AA4B2">última 4×8 · 60 kg</span>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7586" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 11px; font-weight: 500; letter-spacing: 2.4px; color: #9AA4B2">PERNAS</span>
+    <div style="background: #151B23; border-radius: 20px; display: flex; flex-direction: column">
+      <button type="button" style="border: none; background: transparent; color: #F1F5F9; text-align: left; min-height: 64px; padding: 10px 16px; display: flex; align-items: center; gap: 12px; cursor: pointer">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 16px; font-weight: 600">Agachamento livre</span>
+          <span style="font-size: 13px; color: #9AA4B2">1RM 128 kg · última 5×5 · 110 kg</span>
+        </div>
+        <span style="padding: 4px 10px; border-radius: 999px; background: #2E2508; color: #F2C230; font-size: 12px; font-weight: 700; letter-spacing: 0.6px">OURO</span>
+      </button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
