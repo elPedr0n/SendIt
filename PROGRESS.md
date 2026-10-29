@@ -28,16 +28,16 @@ Objetivo: ter o ambiente de desenvolvimento funcional e a base do projeto estrut
 Objetivo: endpoints e telas básicas para gestão de usuários e catálogo de exercícios.
 
 ### Backend
-- [ ] **RF04** — Endpoint `POST /users` (criação de usuário com `name`, `bodyweight_kg`, `weekly_goal`)
-- [ ] **RF04** — Endpoint `GET /users/:id` (consulta de perfil)
-- [ ] **RF04** — Endpoint `PATCH /users/:id` (atualização de peso corporal e meta semanal)
-- [ ] **RF04** — Endpoint `POST /exercises` (criar exercício customizado com `name`, `category`, `tracking_type`)
-- [ ] **RF04** — Endpoint `GET /exercises` (listar catálogo de exercícios)
-- [ ] Seed inicial com exercícios compostos padrão (Supino, Agachamento, Terra, Barra Fixa)
+- [x] **RF04** — Endpoint `POST /users` (criação de usuário com `name`, `bodyweight_kg`, `weekly_goal`)
+- [x] **RF04** — Endpoint `GET /users/:id` (consulta de perfil)
+- [x] **RF04** — Endpoint `PATCH /users/:id` (atualização de peso corporal e meta semanal)
+- [x] **RF04** — Endpoint `POST /exercises` (criar exercício customizado com `name`, `category`, `tracking_type`)
+- [x] **RF04** — Endpoint `GET /exercises` (listar catálogo de exercícios)
+- [x] Seed inicial com exercícios compostos padrão (Supino, Agachamento, Terra, Barra Fixa)
 
 ### Mobile
-- [ ] Tela de onboarding / criação de perfil
-- [ ] Tela de listagem e criação de exercícios customizados
+- [x] Tela de onboarding / criação de perfil
+- [x] Tela de listagem e criação de exercícios customizados
 
 ---
 

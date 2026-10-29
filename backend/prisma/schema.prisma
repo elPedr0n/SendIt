@@ -27,6 +27,7 @@ model ExerciseDict {
   name         String       @unique
   category     String       // ex: Peito, Costas, Pernas, Escalada, Cardio
   trackingType String       @default("reps_weight") @map("tracking_type") // reps_weight | time | distance
+  isCustom     Boolean      @default(false) @map("is_custom") // criado pelo usuário (fora do seed)
   createdAt    DateTime     @default(now()) @map("created_at")
 
   workoutSets  WorkoutSet[]

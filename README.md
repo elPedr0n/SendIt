@@ -126,16 +126,19 @@ docker-compose up -d
 # Configurar e rodar o backend
 cd backend
 npm install
+cp .env.example .env
 npx prisma migrate dev
+npm run db:seed
 npm run dev
 
 # Em outro terminal, rodar o app mobile
 cd mobile
 npm install
+cp .env.example .env   # ajuste EXPO_PUBLIC_API_URL com o IP do seu PC
 npx expo start
 ```
 
-> Nota: O PostgreSQL roda na porta padrão `5432` via Docker e o backend escuta em `http://localhost:3001`.
+> Nota: O PostgreSQL roda na porta padrão `5432` via Docker e o backend escuta em `http://localhost:3001`. Em instalações com o Docker Compose antigo (v1), use `docker-compose` (com hífen) no lugar de `docker compose`.
 
 ## Retomar o Desenvolvimento
 
@@ -173,11 +176,14 @@ npm start
 
 Mantenha esse terminal aberto e escaneie o QR Code com o Expo Go. Para conexão local, o computador e o celular devem estar na mesma rede Wi-Fi. As alterações no app aparecem com o Fast Refresh.
 
+O app precisa do arquivo `mobile/.env` com `EXPO_PUBLIC_API_URL` apontando para o **IP do computador na rede** (ex.: `http://192.168.0.10:3001`) — no celular, `localhost` é o próprio aparelho. Copie de `mobile/.env.example`. Depois de alterar o `.env`, reinicie o `npm start`.
+
 ### Quando dependências ou o banco mudarem
 
 - Se as dependências de uma das pastas mudarem, execute `npm install` nessa pasta antes de iniciar o serviço.
 - Se houver alterações no schema ou novas migrations, execute `npm run prisma:migrate` na pasta `backend`, com o banco ligado.
 - Se precisar regenerar o client do Prisma, execute `npm run prisma:generate` na pasta `backend`.
+- Para (re)popular o catálogo padrão de exercícios, execute `npm run db:seed` na pasta `backend` (idempotente).
 
 ### Encerrar a sessão
 
